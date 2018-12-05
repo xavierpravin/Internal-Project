@@ -1,0 +1,13 @@
+---
+- hosts: linux
+  sudo: yes
+  tasks:
+  - name: Apache installation
+    yum: name=httpd state=present
+  
+  - name: Start Apache Services
+    service: name=httpd enabled=yes state=started
+
+  - name: Copy site file
+    template: src=templates/test.html dest=/var/www/html/index.html
+
