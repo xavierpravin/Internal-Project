@@ -1,0 +1,13 @@
+---
+- hosts: linux
+  become: yes
+  tasks:
+  - name: Update the latest version  Apache
+    yum: name=httpd state=latest
+
+- hosts: linux
+  become: yes
+  become_user: root
+  tasks:
+  - name: reboot system
+    reboot:
